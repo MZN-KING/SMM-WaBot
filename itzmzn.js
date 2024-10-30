@@ -3,7 +3,7 @@ const fs = require("fs");
 const util = require("util");
 const chalk = require("chalk");
 const axios = require("axios");
-const apiKey = "1e46400d492bac924edf6e610f20db23";
+const apiKey = process.env.API_KEY
 
 const slboostingAPI = axios.create({
   baseURL: "https://slboosting.store/api/v2",
