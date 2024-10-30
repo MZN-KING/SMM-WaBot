@@ -20,6 +20,9 @@ const chalk = require("chalk");
 const figlet = require("figlet");
 const _ = require("lodash");
 const PhoneNumber = require("awesome-phonenumber");
+const express = require("express");
+const app = express();
+const PORT = 3000;
 
 const store = makeInMemoryStore({ logger: pino().child({ level: "silent", stream: "store" }) });
 
@@ -325,6 +328,13 @@ async function startMaazin() {
 }
 
 startMaazin();
+app.get("/", (req, res) => {
+  res.send("<h1>Bot is running</h1><p>Your bot is up and running!</p>");
+  });
+
+app.listen(PORT, () => {
+  console.log(`Server running at http://localhost:${PORT}`);
+  });
 
 let file = require.resolve(__filename);
 fs.watchFile(file, () => {
